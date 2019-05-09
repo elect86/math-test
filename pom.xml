@@ -45,6 +45,12 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
     </repositories>
     <!--
        This is the demo/sample template build script for building Java benchmarks with JMH.
@@ -70,9 +76,54 @@ THE POSSIBILITY OF SUCH DAMAGE.
         </dependency>
 
         <dependency>
-            <groupId>com.github.kotlin-graphics</groupId>
+            <groupId>com.github.kotlin-graphics.glm</groupId>
             <artifactId>glm</artifactId>
-            <version>83defb193435e119123bdf7ccf152a77690a2d94</version>
+            <version>48f0a5560f</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl</artifactId>
+            <version>${lwjgl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-jemalloc</artifactId>
+            <version>${lwjgl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-openal</artifactId>
+            <version>${lwjgl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-stb</artifactId>
+            <version>${lwjgl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl</artifactId>
+            <version>${lwjgl.version}</version>
+            <classifier>${lwjgl.natives}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-jemalloc</artifactId>
+            <version>${lwjgl.version}</version>
+            <classifier>${lwjgl.natives}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-openal</artifactId>
+            <version>${lwjgl.version}</version>
+            <classifier>${lwjgl.natives}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-stb</artifactId>
+            <version>${lwjgl.version}</version>
+            <classifier>${lwjgl.natives}</classifier>
         </dependency>
 
     </dependencies>
@@ -90,6 +141,9 @@ THE POSSIBILITY OF SUCH DAMAGE.
           -->
         <javac.target>1.8</javac.target>
 
+        <lwjgl.version>3.2.2-SNAPSHOT</lwjgl.version>
+        <lwjgl.natives>natives-windows</lwjgl.natives>
+
         <!--
             Name of the benchmark Uber-JAR to generate.
           -->
@@ -104,8 +158,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
                 <version>3.1</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
-                    <source>${javac.target}</source>
-                    <target>${javac.target}</target>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
             <plugin>
